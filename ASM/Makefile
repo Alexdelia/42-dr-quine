@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/02/09 15:26:45 by adelille         ###   ########.fr        #
+#    Updated: 2022/02/09 16:18:35 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,14 @@ C_NAME =	Colleen
 G_NAME =	Grace
 S_NAME =	Sully
 
+ASM =	nasm
 CC = 	clang
 RM = 	rm -rf
 
+NFLAGS =	-f elf64
+
 CFLAGS =	-Wall -Werror -Wextra
-# CFLAGS +=	-g3
+ CFLAGS +=	-g3
 # CFLAGS +=	-fsanitize=address
 
 # **************************************************************************** #
@@ -44,9 +47,9 @@ CLR =	$(shell tput el 1)
 # **************************************************************************** #
 #	SRCS	#
 
-C_SRC =	Colleen.c
-G_SRC =	Grace.c
-S_SRC =	Sully.c
+C_SRC =	Colleen.s
+G_SRC =	Grace.s
+S_SRC =	Sully.s
 
 C_OBJ =	Colleen.o
 G_OBJ = Grace.o
@@ -62,8 +65,8 @@ test:	all
 	./$(G_NAME) > tmp_$(G_NAME); diff tmp_$(G_NAME) $(G_NAME)
 	./$(S_NAME) > tmp_$(S_NAME); diff tmp_$(S_NAME) $(S_NAME)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+%.o: %.s
+	$(ASM) $(NFLAGS) $< -o $@
 
 $(C_NAME):	$(C_OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
