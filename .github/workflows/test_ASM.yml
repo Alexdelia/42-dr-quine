@@ -1,0 +1,11 @@
+name: test ASM
+
+on: push
+
+jobs:
+  test-ASM:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: make test && diff on .s
+      run: make test -C ./ASM/
