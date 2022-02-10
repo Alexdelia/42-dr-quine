@@ -1,0 +1,11 @@
+name: test C
+
+on: push
+
+jobs:
+  test-C:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: make test && diff on .c
+      run: make test -C ./C/
