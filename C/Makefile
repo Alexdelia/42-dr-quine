@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/02/09 15:26:45 by adelille         ###   ########.fr        #
+#    Updated: 2022/02/10 12:56:25 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,8 @@ C_OBJ =	Colleen.o
 G_OBJ = Grace.o
 S_OBJ = Sully.o
 
+G_KID =	Grace_kid.c
+
 # *************************************************************************** #
 #	RULES	#
 
@@ -59,7 +61,7 @@ all:	$(C_NAME) $(G_NAME) $(S_NAME)
 
 test:	all
 	./$(C_NAME) > tmp_$(C_NAME); diff tmp_$(C_NAME) $(C_NAME)
-	./$(G_NAME) > tmp_$(G_NAME); diff tmp_$(G_NAME) $(G_NAME)
+	./$(G_NAME); diff $(G_KID) $(G_NAME)
 	./$(S_NAME) > tmp_$(S_NAME); diff tmp_$(S_NAME) $(S_NAME)
 
 %.o: %.c
@@ -76,7 +78,7 @@ clean:
 	@$(RM) $(C_OBJ) $(G_OBJ) $(S_OBJ)
 
 fclean:	clean
-	@$(RM) $(C_NAME) $(G_NAME) $(S_NAME) tmp_*
+	@$(RM) $(C_NAME) $(G_NAME) $(S_NAME) tmp_* $(G_KID)
 
 re:		fclean all
 
