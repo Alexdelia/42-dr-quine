@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/02/10 12:56:25 by adelille         ###   ########.fr        #
+#    Updated: 2022/02/14 22:31:23 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,9 +60,9 @@ G_KID =	Grace_kid.c
 all:	$(C_NAME) $(G_NAME) $(S_NAME)
 
 test:	all
-	./$(C_NAME) > tmp_$(C_NAME); diff tmp_$(C_NAME) $(C_NAME)
-	./$(G_NAME); diff $(G_KID) $(G_NAME)
-	./$(S_NAME) > tmp_$(S_NAME); diff tmp_$(S_NAME) $(S_NAME)
+	./$(C_NAME) > tmp_$(C_SRC); diff tmp_$(C_SRC) $(C_SRC)
+	./$(G_NAME); diff $(G_KID) $(G_SRC)
+	./$(S_NAME); diff $(S_SRC) Sully_5.c; ls -l | grep Sully_*.c | wc -l
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -78,7 +78,7 @@ clean:
 	@$(RM) $(C_OBJ) $(G_OBJ) $(S_OBJ)
 
 fclean:	clean
-	@$(RM) $(C_NAME) $(G_NAME) $(S_NAME) tmp_* $(G_KID)
+	@$(RM) $(C_NAME) $(G_NAME) $(S_NAME) tmp_* $(G_KID) Sully_*
 
 re:		fclean all
 
