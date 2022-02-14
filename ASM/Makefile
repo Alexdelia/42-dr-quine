@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/02/14 22:31:41 by adelille         ###   ########.fr        #
+#    Updated: 2022/02/14 22:42:28 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,9 @@ all:	$(C_NAME) $(G_NAME) $(S_NAME)
 test:	all
 	./$(C_NAME) > tmp_$(C_SRC); diff tmp_$(C_SRC) $(C_SRC)
 	./$(G_NAME); diff $(G_KID) $(G_SRC)
-	./$(S_NAME); diff $(S_SRC) Sully_5.s; ls -l | grep Sully_*.s | wc -l
+	./$(S_NAME); diff $(S_SRC) $(S_NAME)_5.s
+	ls -l | grep "$(S_NAME)*" | wc -l > tmp_$(S_SRC)
+	echo "16" > tmp_diff; diff tmp_$(S_SRC) tmp_diff
 
 %.o: %.s
 	$(ASM) $(NFLAGS) $< -o $@
