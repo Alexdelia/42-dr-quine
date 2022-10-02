@@ -1,0 +1,11 @@
+name: test Python
+
+on: push
+
+jobs:
+  test-Python:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: make test && diff on .py
+      run: make test -C ./Python/
