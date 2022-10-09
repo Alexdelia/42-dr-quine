@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/02/14 22:41:53 by adelille         ###   ########.fr        #
+#    Updated: 2022/10/09 11:31:55 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ G_KID =	Grace_kid.c
 
 all:	$(C_NAME) $(G_NAME) $(S_NAME)
 
-test:	all
+test:	re
 	./$(C_NAME) > tmp_$(C_SRC); diff tmp_$(C_SRC) $(C_SRC)
 	./$(G_NAME); diff $(G_KID) $(G_SRC)
 	./$(S_NAME); diff $(S_SRC) $(S_NAME)_5.c
