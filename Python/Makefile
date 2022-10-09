@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/10/09 11:33:32 by adelille         ###   ########.fr        #
+#    Updated: 2022/10/09 11:38:31 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,8 +37,8 @@ test:	re
 	./$(C_NAME) > tmp_$(C_SRC); diff tmp_$(C_SRC) $(C_SRC)
 	./$(G_NAME); diff $(G_KID) $(G_SRC)
 	./$(S_NAME); diff $(S_SRC) $(S_NAME)_5.py
-	ls -l | grep "$(S_NAME)*" | wc -l > tmp_$(S_SRC)
-	echo "9" > tmp_diff; diff tmp_$(S_SRC) tmp_diff
+	ls -l | grep "$(S_NAME)_" | wc -l > tmp_$(S_SRC)
+	echo "6" > tmp_diff; diff tmp_$(S_SRC) tmp_diff
 
 $(C_NAME):	$(C_SRC)
 	cp $^ $@
