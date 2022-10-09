@@ -6,6 +6,11 @@ jobs:
   test-ASM:
     runs-on: ubuntu-latest
     steps:
+    - uses: ilammy/setup-nasm@v1
     - uses: actions/checkout@v2
     - name: make test && diff on .s
-      run: make test -C ./ASM/
+      run: |
+        cd third_party/boringssl
+        cmake -G Ninja . && ninja
+        cd ../..
+        make test -C ./ASM/
